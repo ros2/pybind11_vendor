@@ -48,6 +48,7 @@ macro(build_pybind11)
     TIMEOUT 600
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
+      -DPYBIND11_TEST=OFF
       ${extra_cmake_args}
   )
 
