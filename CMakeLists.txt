@@ -42,9 +42,9 @@ macro(build_pybind11)
 
 
   include(ExternalProject)
-  ExternalProject_Add(pybind11-2.2.4
-    URL https://github.com/pybind/pybind11/archive/v2.2.4.tar.gz
-    URL_MD5 c533a107bc95bd0c5525ff650b11bfa1
+  ExternalProject_Add(pybind11-2.5.0
+    URL https://github.com/pybind/pybind11/archive/v2.5.0.tar.gz
+    URL_MD5 1ad2c611378fb440e8550a7eb6b31b89
     TIMEOUT 600
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
