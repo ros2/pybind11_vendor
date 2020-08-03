@@ -6,21 +6,10 @@ find_package(ament_cmake REQUIRED)
 
 macro(build_pybind11)
   set(extra_cmake_args)
-  # set(cmake_commands)
   if(DEFINED CMAKE_BUILD_TYPE)
     if(NOT WIN32)
       list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
     endif()
-    # if(WIN32)
-    #   list(APPEND extra_cmake_args "-Wno-dev")
-    # endif()
-
-    # if(WIN32)
-    #   build_command(_build_command CONFIGURATION ${CMAKE_BUILD_TYPE})
-    #   list(APPEND cmake_commands "BUILD_COMMAND ${_build_command}")
-    # else()
-    #   list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
-    # endif()
   endif()
   if(DEFINED CMAKE_TOOLCHAIN_FILE)
     list(APPEND extra_cmake_args "-DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}")
@@ -58,7 +47,6 @@ macro(build_pybind11)
     URL https://github.com/pybind/pybind11/archive/v2.5.0.tar.gz
     URL_MD5 1ad2c611378fb440e8550a7eb6b31b89
     TIMEOUT 600
-    # ${cmake_commands}
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
       -DPYBIND11_TEST=OFF
