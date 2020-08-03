@@ -8,7 +8,9 @@ macro(build_pybind11)
   set(extra_cmake_args)
   # set(cmake_commands)
   if(DEFINED CMAKE_BUILD_TYPE)
-    list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
+    if(NOT WIN32)
+      list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
+    endif()
     # if(WIN32)
     #   list(APPEND extra_cmake_args "-Wno-dev")
     # endif()
@@ -60,7 +62,6 @@ macro(build_pybind11)
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
       -DPYBIND11_TEST=OFF
-      -Wno-dev
       ${extra_cmake_args}
   )
 
