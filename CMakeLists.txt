@@ -6,9 +6,14 @@ find_package(ament_cmake REQUIRED)
 
 macro(build_pybind11)
   set(extra_cmake_args)
-  if(DEFINED CMAKE_BUILD_TYPE)
-    list(APPEND extra_cmake_args -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
-  endif()
+
+  # CMAKE_BUILD_TYPE was removed in ros2:pybind11_vendor#3 to eliminate warning
+  # on Windows about unused variable. It is only used for tests, which we are
+  # not building, and in pybind11Tools.cmake for Linux and Mac. In any case,
+  # pybind11 is a headers-only class and does not require building at the time
+  # of this vendor package, thus does not require passing in the variable here.
+  # It will use the variable value in packages that depend on it for compiling.
+
   if(DEFINED CMAKE_TOOLCHAIN_FILE)
     list(APPEND extra_cmake_args "-DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}")
     if(ANDROID)
