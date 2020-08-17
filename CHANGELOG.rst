@@ -2,8 +2,8 @@
 Changelog for package pybind11_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.2.5 (2020-08-17)
+------------------
 * Merge pull request `#3 <https://github.com/ros2/pybind11_vendor/issues/3>`_ from ros2/fix_windows_warning
 * remove passing in CMAKE_BUILD_TYPE
   Signed-off-by: Mabel Zhang <mabel@openrobotics.org>
