@@ -2,8 +2,8 @@
 Changelog for package pybind11_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.2.6 (2020-12-10)
+------------------
 * Update maintainers (`#7 <https://github.com/ros2/pybind11_vendor/issues/7>`_)
 * Contributors: Shane Loretz
 
