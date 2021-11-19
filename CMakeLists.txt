@@ -4,6 +4,14 @@ project(pybind11_vendor)
 
 find_package(ament_cmake REQUIRED)
 
+option(FORCE_BUILD_VENDOR_PKG
+  "Build pybind11 from source, even if system-installed package is available"
+  OFF)
+
+if(NOT FORCE_BUILD_VENDOR_PKG)
+  find_package(pybind11 QUIET)
+endif()
+
 macro(build_pybind11)
   set(extra_cmake_args)
 
@@ -46,9 +54,9 @@ macro(build_pybind11)
 
 
   include(ExternalProject)
-  ExternalProject_Add(pybind11-2.5.0
-    URL https://github.com/pybind/pybind11/archive/v2.5.0.tar.gz
-    URL_MD5 1ad2c611378fb440e8550a7eb6b31b89
+  ExternalProject_Add(pybind11-2.7.1
+    URL https://github.com/pybind/pybind11/archive/v2.7.1.tar.gz
+    URL_MD5 b87860218c143728f8e6efa6cba7e1ed
     TIMEOUT 600
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
@@ -66,8 +74,8 @@ macro(build_pybind11)
   )
 endmacro()
 
-# Currently, always build.
-# This could be improved with logic to use installed platform packages.
-build_pybind11()
+if(NOT pybind11_FOUND)
+  build_pybind11()
+endif()
 
 ament_package()
