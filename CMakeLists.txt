@@ -52,16 +52,28 @@ macro(build_pybind11)
   endif()
   list(APPEND extra_cmake_args "-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}")
 
-
   include(ExternalProject)
   ExternalProject_Add(pybind11-2.7.1
-    URL https://github.com/pybind/pybind11/archive/v2.7.1.tar.gz
-    URL_MD5 b87860218c143728f8e6efa6cba7e1ed
-    TIMEOUT 600
+    GIT_REPOSITORY https://github.com/pybind/pybind11.git
+    GIT_TAG v2.7.1
+    GIT_CONFIG advice.detachedHead=false
+    # Suppress git update due to https://gitlab.kitware.com/cmake/cmake/-/issues/16419
+    # See https://github.com/ament/uncrustify_vendor/pull/22 for details
+    UPDATE_COMMAND ""
+    TIMEOUT 300
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
       -DPYBIND11_TEST=OFF
       ${extra_cmake_args}
+    # By default, pybind11 sets Py_DEBUG if the interpreter is a debug one (as
+    # it is in Windows Debug).  Unfortunately, this conflicts with Py_DEBUG as
+    # used by the CPython headers, and ultimately ends up causing multiple
+    # definitions for Py_DEBUG, which MSVC complains about.  This patch switches
+    # the internal pybind11 variable to be called PYBIND11_DEBUG, which avoids
+    # the issue.
+    PATCH_COMMAND
+      ${CMAKE_COMMAND} -E chdir <SOURCE_DIR> git apply -p1 --ignore-space-change --whitespace=nowarn
+        ${CMAKE_CURRENT_SOURCE_DIR}/pybind11-2.7.1-fix-windows-debug.patch
   )
 
   # The external project will install to the build folder, but we'll install that on make install.
