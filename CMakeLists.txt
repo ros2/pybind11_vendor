@@ -4,6 +4,14 @@ project(pybind11_vendor)
 
 find_package(ament_cmake REQUIRED)
 
+option(FORCE_BUILD_VENDOR_PKG
+  "Build pybind11 from source, even if system-installed package is available"
+  OFF)
+
+if(NOT FORCE_BUILD_VENDOR_PKG)
+  find_package(pybind11 QUIET)
+endif()
+
 macro(build_pybind11)
   set(extra_cmake_args)
 
@@ -44,16 +52,28 @@ macro(build_pybind11)
   endif()
   list(APPEND extra_cmake_args "-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}")
 
-
   include(ExternalProject)
-  ExternalProject_Add(pybind11-2.5.0
-    URL https://github.com/pybind/pybind11/archive/v2.5.0.tar.gz
-    URL_MD5 1ad2c611378fb440e8550a7eb6b31b89
-    TIMEOUT 600
+  ExternalProject_Add(pybind11-2.7.1
+    GIT_REPOSITORY https://github.com/pybind/pybind11.git
+    GIT_TAG v2.7.1
+    GIT_CONFIG advice.detachedHead=false
+    # Suppress git update due to https://gitlab.kitware.com/cmake/cmake/-/issues/16419
+    # See https://github.com/ament/uncrustify_vendor/pull/22 for details
+    UPDATE_COMMAND ""
+    TIMEOUT 300
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
       -DPYBIND11_TEST=OFF
       ${extra_cmake_args}
+    # By default, pybind11 sets Py_DEBUG if the interpreter is a debug one (as
+    # it is in Windows Debug).  Unfortunately, this conflicts with Py_DEBUG as
+    # used by the CPython headers, and ultimately ends up causing multiple
+    # definitions for Py_DEBUG, which MSVC complains about.  This patch switches
+    # the internal pybind11 variable to be called PYBIND11_DEBUG, which avoids
+    # the issue.
+    PATCH_COMMAND
+      ${CMAKE_COMMAND} -E chdir <SOURCE_DIR> git apply -p1 --ignore-space-change --whitespace=nowarn
+        ${CMAKE_CURRENT_SOURCE_DIR}/pybind11-2.7.1-fix-windows-debug.patch
   )
 
   # The external project will install to the build folder, but we'll install that on make install.
@@ -66,8 +86,8 @@ macro(build_pybind11)
   )
 endmacro()
 
-# Currently, always build.
-# This could be improved with logic to use installed platform packages.
-build_pybind11()
+if(NOT pybind11_FOUND)
+  build_pybind11()
+endif()
 
 ament_package()

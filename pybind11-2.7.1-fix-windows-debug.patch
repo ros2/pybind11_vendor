@@ -1,0 +1,50 @@
+--- a/tools/pybind11Tools.cmake	2022-01-05 20:09:58.470396082 +0000
++++ b/tools/pybind11Tools.cmake	2022-01-05 20:10:09.967351988 +0000
+@@ -113,7 +113,7 @@ if(PYTHON_IS_DEBUG)
+   set_property(
+     TARGET pybind11::pybind11
+     APPEND
+-    PROPERTY INTERFACE_COMPILE_DEFINITIONS Py_DEBUG)
++    PROPERTY INTERFACE_COMPILE_DEFINITIONS PYBIND11_DEBUG)
+ endif()
+ 
+ set_property(
+--- a/tools/pybind11NewTools.cmake	2022-01-05 20:10:04.286373776 +0000
++++ b/tools/pybind11NewTools.cmake	2022-01-05 20:10:30.186274440 +0000
+@@ -123,7 +123,7 @@ if(PYTHON_IS_DEBUG)
+   set_property(
+     TARGET pybind11::pybind11
+     APPEND
+-    PROPERTY INTERFACE_COMPILE_DEFINITIONS Py_DEBUG)
++    PROPERTY INTERFACE_COMPILE_DEFINITIONS PYBIND11_DEBUG)
+ endif()
+ 
+ # Check on every access - since Python2 and Python3 could have been used - do nothing in that case.
+--- a/include/pybind11/detail/common.h	2022-01-05 20:08:54.029643196 +0000
++++ b/include/pybind11/detail/common.h	2022-01-05 20:09:12.178573603 +0000
+@@ -137,7 +137,7 @@
+ #  pragma warning(push)
+ // C4505: 'PySlice_GetIndicesEx': unreferenced local function has been removed (PyPy only)
+ #  pragma warning(disable: 4505)
+-#  if defined(_DEBUG) && !defined(Py_DEBUG)
++#  if defined(_DEBUG) && !defined(PYBIND11_DEBUG)
+ #    define PYBIND11_DEBUG_MARKER
+ #    undef _DEBUG
+ #  endif
+--- a/CMakeLists.txt	2022-01-06 14:02:51.005506594 +0000
++++ b/CMakeLists.txt	2022-01-06 14:08:09.755079249 +0000
+@@ -16,6 +16,14 @@ else()
+   cmake_policy(VERSION 3.18)
+ endif()
+ 
++# In CMake version 3.22 or above, cmake_dependent_option now supports Full Condition Syntax
++# (see https://cmake.org/cmake/help/latest/module/CMakeDependentOption.html).
++# Unfortunately, the detection of what needs to be escaped seems to be buggy, so we
++# disable this warning for now.
++if(${CMAKE_VERSION} VERSION_GREATER 3.22)
++  cmake_policy(SET CMP0127 OLD)
++endif()
++
+ # Extract project version from source
+ file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/include/pybind11/detail/common.h"
+      pybind11_version_defines REGEX "#define PYBIND11_VERSION_(MAJOR|MINOR|PATCH) ")
