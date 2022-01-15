@@ -2,6 +2,12 @@
 Changelog for package pybind11_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.3.0 (2022-01-14)
+------------------
+* Update pybind11 to 2.7.1. (`#10 <https://github.com/ros2/pybind11_vendor/issues/10>`_)
+  This is the version that is shipped in Ubuntu 22.04.
+* Contributors: Chris Lalancette
+
 2.2.6 (2020-12-10)
 ------------------
 * Update maintainers (`#7 <https://github.com/ros2/pybind11_vendor/issues/7>`_)
