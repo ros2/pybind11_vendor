@@ -64,6 +64,7 @@ macro(build_pybind11)
     CMAKE_ARGS
       -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}_install
       -DPYBIND11_TEST=OFF
+      -DCMAKE_INSTALL_INCLUDEDIR=include/${PROJECT_NAME}
       ${extra_cmake_args}
     # By default, pybind11 sets Py_DEBUG if the interpreter is a debug one (as
     # it is in Windows Debug).  Unfortunately, this conflicts with Py_DEBUG as
