@@ -2,6 +2,12 @@
 Changelog for package pybind11_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.4.0 (2022-03-28)
+------------------
+* Use sha256 hash instead of tag (`#12 <https://github.com/ros2/pybind11_vendor/issues/12>`_)
+* Install headers to include/${PROJECT_NAME} (`#11 <https://github.com/ros2/pybind11_vendor/issues/11>`_)
+* Contributors: Shane Loretz
+
 2.3.0 (2022-01-14)
 ------------------
 * Update pybind11 to 2.7.1. (`#10 <https://github.com/ros2/pybind11_vendor/issues/10>`_)
