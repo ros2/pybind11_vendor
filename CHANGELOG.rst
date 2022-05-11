@@ -2,6 +2,12 @@
 Changelog for package pybind11_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.4.1 (2022-05-10)
+------------------
+* Update to pybind11 2.9.1.
+* Rename patch file for history continuity.
+* Contributors: Steven! Ragnarök
+
 2.4.0 (2022-03-28)
 ------------------
 * Use sha256 hash instead of tag (`#12 <https://github.com/ros2/pybind11_vendor/issues/12>`_)
