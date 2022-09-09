@@ -91,4 +91,4 @@ if(NOT pybind11_FOUND)
   build_pybind11()
 endif()
 
-ament_package()
+ament_package(CONFIG_EXTRAS_POST "${PROJECT_NAME}-extras.cmake")
