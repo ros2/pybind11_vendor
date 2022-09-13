@@ -2,6 +2,14 @@
 Changelog for package pybind11_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Mirror rolling to master
+* Update maintainers (`#14 <https://github.com/ros2/pybind11_vendor/issues/14>`_)
+* Update to pybind11 2.9.1.
+* Rename patch file for history continuity.
+* Contributors: Audrow Nash, Steven! Ragnarök, methylDragon
+
 2.4.0 (2022-03-28)
 ------------------
 * Use sha256 hash instead of tag (`#12 <https://github.com/ros2/pybind11_vendor/issues/12>`_)
