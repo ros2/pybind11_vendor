@@ -2,8 +2,8 @@
 Changelog for package pybind11_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+3.0.0 (2022-09-13)
+------------------
 * Mirror rolling to master
 * Update maintainers (`#14 <https://github.com/ros2/pybind11_vendor/issues/14>`_)
 * Update to pybind11 2.9.1.
