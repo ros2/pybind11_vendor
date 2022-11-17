@@ -8,11 +8,15 @@
   <description>
     Wrapper around pybind11.
   </description>
-  <maintainer email="brandon@openrobotics.org">Brandon Ong</maintainer>
+
+  <maintainer email="scott@openrobotics.org">Scott K Logan</maintainer>
+
   <license>Apache License 2.0</license>  <!-- the contents of this package are Apache 2.0 -->
   <license>BSD</license>  <!-- pybind11 is BSD -->
 
   <url type="website">https://github.com/pybind/pybind11</url>
+
+  <author email="brandon@openrobotics.org">Brandon Ong</author>
   <author email="michael@openrobotics.org">Michael Carroll</author>
   <author email="sloretz@openrobotics.org">Shane Loretz</author>
 
