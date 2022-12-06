@@ -2,6 +2,11 @@
 Changelog for package pybind11_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.2.7 (2022-12-06)
+------------------
+* Add missing buildtool dependency on git (`#21 <https://github.com/ros2/pybind11_vendor/issues/21>`_)
+* Contributors: Scott K Logan
+
 2.2.6 (2020-12-10)
 ------------------
 * Update maintainers (`#7 <https://github.com/ros2/pybind11_vendor/issues/7>`_)
