@@ -16,6 +16,7 @@
   <author email="michael@openrobotics.org">Michael Carroll</author>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>git</buildtool_depend>
 
   <depend>pybind11-dev</depend>
 
