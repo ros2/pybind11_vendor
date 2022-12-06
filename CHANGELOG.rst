@@ -2,6 +2,12 @@
 Changelog for package pybind11_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+3.0.2 (2022-12-06)
+------------------
+* Add missing buildtool dependency on git (`#19 <https://github.com/ros2/pybind11_vendor/issues/19>`_)
+* Update maintainers (`#17 <https://github.com/ros2/pybind11_vendor/issues/17>`_)
+* Contributors: Audrow Nash, Scott K Logan
+
 3.0.1 (2022-11-02)
 ------------------
 * Force pybind11 to find Python 3. (`#15 <https://github.com/ros2/pybind11_vendor/issues/15>`_)
