@@ -2,6 +2,9 @@
 Changelog for package pybind11_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+3.1.0 (2023-04-27)
+------------------
+
 3.0.3 (2023-04-11)
 ------------------
 * Add a modified patch from upstream to support Python 3.11 (`#22 <https://github.com/ros2/pybind11_vendor/issues/22>`_)
