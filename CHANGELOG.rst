@@ -2,6 +2,11 @@
 Changelog for package pybind11_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+3.1.1 (2023-07-11)
+------------------
+* Switch to ament_cmake_vendor_package (`#24 <https://github.com/ros2/pybind11_vendor/issues/24>`_)
+* Contributors: Scott K Logan
+
 3.1.0 (2023-04-27)
 ------------------
 
