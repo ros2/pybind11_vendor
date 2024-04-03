@@ -9,7 +9,7 @@ find_package(pybind11 QUIET)
 ament_vendor(pybind11_vendor
   SATISFIED ${pybind11_FOUND}
   VCS_URL https://github.com/pybind/pybind11.git
-  VCS_VERSION v2.9.1
+  VCS_VERSION v2.11.1
   PATCHES patches
   GLOBAL_HOOK
 )
