@@ -2,6 +2,12 @@
 Changelog for package pybind11_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+3.1.2 (2024-04-16)
+------------------
+* Update to pybind11 2.11.1 (`#28 <https://github.com/ros2/pybind11_vendor/issues/28>`_)
+* Add Apache 2.0 LICENSE file (`#27 <https://github.com/ros2/pybind11_vendor/issues/27>`_)
+* Contributors: Chris Lalancette, Michael Carroll
+
 3.1.1 (2023-07-11)
 ------------------
 * Switch to ament_cmake_vendor_package (`#24 <https://github.com/ros2/pybind11_vendor/issues/24>`_)
