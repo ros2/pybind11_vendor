@@ -1,0 +1,52 @@
+diff --git a/docs/changelog.md b/docs/changelog.md
+index d5a29068..1b373c5c 100644
+--- a/docs/changelog.md
++++ b/docs/changelog.md
+@@ -2137,7 +2137,7 @@ Smaller or developer focused features and fixes:
+   [#1455](https://github.com/pybind/pybind11/pull/1455).
+ - Allow ostream-redirection of more than 1024 characters.
+   [#1479](https://github.com/pybind/pybind11/pull/1479).
+-- Set `Py_DEBUG` define when compiling against a debug Python build.
++- Set `PYBIND11_DEBUG` define when compiling against a debug Python build.
+   [#1438](https://github.com/pybind/pybind11/pull/1438).
+ - Untangle integer logic in number type caster to work for custom types
+   that may only be castable to a restricted set of builtin types.
+diff --git a/include/pybind11/conduit/wrap_include_python_h.h b/include/pybind11/conduit/wrap_include_python_h.h
+index 713dc4bb..2aae6354 100644
+--- a/include/pybind11/conduit/wrap_include_python_h.h
++++ b/include/pybind11/conduit/wrap_include_python_h.h
+@@ -16,7 +16,7 @@
+ // DO NOT ADD CODE THAT REQUIRES C++ EXCEPTION HANDLING.
+ 
+ // Disable linking to pythonX_d.lib on Windows in debug mode.
+-#if defined(_MSC_VER) && defined(_DEBUG) && !defined(Py_DEBUG)
++#if defined(_MSC_VER) && defined(_DEBUG) && !defined(PYBIND11_DEBUG)
+ // Workaround for a VS 2022 issue.
+ // See https://github.com/pybind/pybind11/pull/3497 for full context.
+ // NOTE: This workaround knowingly violates the Python.h include order
+diff --git a/tools/pybind11NewTools.cmake b/tools/pybind11NewTools.cmake
+index e881ca7c..0598e14e 100644
+--- a/tools/pybind11NewTools.cmake
++++ b/tools/pybind11NewTools.cmake
+@@ -209,7 +209,7 @@ if(PYTHON_IS_DEBUG)
+   set_property(
+     TARGET pybind11::pybind11
+     APPEND
+-    PROPERTY INTERFACE_COMPILE_DEFINITIONS Py_DEBUG)
++    PROPERTY INTERFACE_COMPILE_DEFINITIONS PYBIND11_DEBUG)
+ endif()
+ 
+ # Check on every access - since Python can change - do nothing in that case.
+diff --git a/tools/pybind11Tools.cmake b/tools/pybind11Tools.cmake
+index a51efb39..ae42ed53 100644
+--- a/tools/pybind11Tools.cmake
++++ b/tools/pybind11Tools.cmake
+@@ -107,7 +107,7 @@ if(PYTHON_IS_DEBUG)
+   set_property(
+     TARGET pybind11::pybind11
+     APPEND
+-    PROPERTY INTERFACE_COMPILE_DEFINITIONS Py_DEBUG)
++    PROPERTY INTERFACE_COMPILE_DEFINITIONS PYBIND11_DEBUG)
+ endif()
+ 
+ # The IMPORTED INTERFACE library here is to ensure that "debug" and "release" get processed outside
