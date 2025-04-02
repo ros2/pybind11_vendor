@@ -2,8 +2,8 @@
 Changelog for package pybind11_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+3.1.3 (2025-04-02)
+------------------
 * Merge pull request `#30 <https://github.com/ros2/pybind11_vendor/issues/30>`_ from ros2/mergify/bp/jazzy/pr-29
   Remove CODEOWNERS and mirror-rolling-to-master workflow. (backport `#29 <https://github.com/ros2/pybind11_vendor/issues/29>`_)
 * Contributors: mergify[bot]
