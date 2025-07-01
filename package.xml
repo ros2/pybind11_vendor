@@ -4,7 +4,7 @@
   schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="2">
   <name>pybind11_vendor</name>
-  <version>3.3.0</version>
+  <version>3.3.1</version>
   <description>
     Wrapper around pybind11.
   </description>
