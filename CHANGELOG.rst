@@ -2,6 +2,9 @@
 Changelog for package pybind11_vendor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 3.3.0 (2025-04-25)
 ------------------
 * Remove CODEOWNERS and mirror-rolling-to-master workflow. (`#29 <https://github.com/ros2/pybind11_vendor/issues/29>`_)
